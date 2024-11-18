@@ -1,5 +1,8 @@
 # MVC 패턴 
+<p align="center">
 ![image](https://github.com/user-attachments/assets/f5889b1a-7e33-4ab7-8b14-0f7d5d72d2c0)
+</p>
+
 ---
 
 ## MVC 패턴은 무엇일까?
