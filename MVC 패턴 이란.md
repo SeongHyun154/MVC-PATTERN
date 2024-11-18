@@ -28,6 +28,26 @@
 &nbsp;&nbsp;&nbsp; - DAO(Data Access Object) 및 DTO(Data Transfer Object)와 긴밀하게 연결됩니다.<br>
 &nbsp;&nbsp;&nbsp; - 예: Spring의 @Controller나 @RestController로 작성된 클래스. 사용자가 전송한 로그인 정보를 받아 인증 처리 후 결과를 반환하는 컨트롤러 메서드.<br>
 
+## 2. MVC 패턴의 확장 요소
+
+### 2.1 DAO (Data Access Object)
+
+- **역할**:  
+  - 데이터베이스와 상호작용하는 객체로, 주로 SQL 쿼리를 작성하거나 ORM(Object-Relational Mapping)을 통해 데이터를 CRUD(Create, Read, Update, Delete)하는 역할을 합니다.
+
+- **예**:  
+  - `UserDAO`: 사용자의 데이터를 조회하거나 수정하는 클래스.
+  - Spring에서는 `@Repository` 어노테이션을 통해 DAO를 구현합니다.
+
+```java
+@Repository
+public class UserDAO {
+    public User findById(Long id) {
+        // 데이터베이스 조회 로직 구현
+        return new User("exampleUser", "example@example.com");
+    }
+}
+
 
 
 2. MVC 패턴의 확장 요소
