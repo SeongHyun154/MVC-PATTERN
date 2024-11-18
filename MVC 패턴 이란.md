@@ -1,7 +1,11 @@
 # MVC 패턴 
 <p align="center">
-![image](https://github.com/user-attachments/assets/f5889b1a-7e33-4ab7-8b14-0f7d5d72d2c0)
+ 
+![image](https://github.com/user-attachments/assets/88348fd3-703a-48ad-8f2d-2c3cd87fc554)
+
+
 </p>
+
 
 ---
 
