@@ -29,3 +29,57 @@
 &nbsp;&nbsp;&nbsp; - 예: Spring의 @Controller나 @RestController로 작성된 클래스. 사용자가 전송한 로그인 정보를 받아 인증 처리 후 결과를 반환하는 컨트롤러 메서드.<br>
 
 
+
+2. MVC 패턴의 확장 요소
+2.1 DAO (Data Access Object)
+역할:
+
+데이터베이스와 상호작용하는 객체입니다.
+SQL 쿼리를 작성하거나 ORM을 통해 데이터를 CRUD(Create, Read, Update, Delete)합니다.
+예:
+
+UserDAO: 사용자의 데이터를 조회하거나 수정하는 클래스.
+Spring에서는 @Repository 어노테이션을 통해 DAO를 구현.
+2.2 DTO (Data Transfer Object)
+역할:
+
+데이터를 전송하거나 교환하기 위한 객체입니다.
+주로 컨트롤러와 뷰 간, 또는 서비스와 컨트롤러 간 데이터 교환을 위해 사용됩니다.
+특징:
+
+Getter/Setter만 포함된 간단한 객체.
+데이터 유효성 검증 로직은 포함하지 않음.
+예:
+
+java
+코드 복사
+public class UserDTO {
+    private String username;
+    private String email;
+    // Getter and Setter
+}
+2.3 Service (서비스 레이어)
+역할:
+
+비즈니스 로직을 처리하는 중간 계층입니다.
+컨트롤러에서 요청을 받아 DAO를 호출하거나, 특정 로직을 수행한 결과를 반환합니다.
+장점:
+
+비즈니스 로직이 컨트롤러에 집중되지 않도록 하여 재사용성과 유지보수성을 높입니다.
+예:
+
+java
+코드 복사
+@Service
+public class UserService {
+    private final UserDAO userDAO;
+
+    public UserService(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
+    public UserDTO getUserById(Long id) {
+        User user = userDAO.findById(id);
+        return new UserDTO(user.getUsername(), user.getEmail());
+    }
+}
