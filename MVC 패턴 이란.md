@@ -26,7 +26,7 @@
   - HTML, JSP, Thymeleaf 등으로 구현된 화면. 
   - 유저 목록, 로그인 화면, 대시보드 UI 등이 포함
 
- ### Controller (컨트롤러)
+ ### 1.3 Controller (컨트롤러)
 - **역할**:  
   - 사용자의 요청을 받고, 이를 처리하여 응답을 반환하는 로직을 담당합니다
   - 모델과 뷰를 연결하며, 모델에서 데이터를 가져와 뷰로 전달하거나, 뷰에서 받은 데이터를 처리하여 모델에 저장합니다.
@@ -75,4 +75,34 @@ public class UserDTO {
     private String email;
 
     // Getter and Setter
+}```
+
+### 2.3 Service (서비스 레이어)
+
+- **역할**:  
+  - 비즈니스 로직을 처리하는 중간 계층입니다. 컨트롤러에서 요청을 받아 DAO를 호출하거나, 특정 로직을 수행한 결과를 반환합니다.
+ 
+- **특징**:  
+  - 비즈니스 로직이 컨트롤러에 집중되지 않도록 하여 재사용성과 유지보수성을 높입니다.
+  
+
+- **예**:  
+
+```java
+@Service
+public class UserService {
+    private final UserDAO userDAO;
+
+    public UserService(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
+    public UserDTO getUserById(Long id) {
+        User user = userDAO.findById(id);
+        return new UserDTO(user.getUsername(), user.getEmail());
+    }
 }
+}```
+
+
+
